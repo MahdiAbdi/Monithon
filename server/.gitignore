@@ -1,5 +1,5 @@
 # Custom ignores
-config.json
+config.js
 
 
 # Created by https://www.gitignore.io/api/node,visualstudiocode

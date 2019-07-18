@@ -1,11 +1,14 @@
 const express = require('express');
 const shell = require('shelljs');
 
-const config = require("./config.json");
-const targets = require("./targets.json");
+const config = require("./config.js");
+const targets = require("./targets.js");
 const api = require('./api');
 
-const app = express()
+const db = require('./db');
+db.createTablesIfNotExist();
+
+const app = express();
 
 app.get('/', (req, res) => res.send('<h1>Dideban is UP!</h1>'))
 app.get('/checkPeriod', api.checkPeriod);
@@ -17,6 +20,7 @@ for (let i = 0; i < targets.length; i++) {
     setInterval(() => {
         if (target.source.type === "script") {
             let result = shell.exec(target.source.path);
+            db.put(target.name, result.code, result.stdout, result.stderr);
         }
     }, target.period);
 }

@@ -1,4 +1,4 @@
-[
+module.exports = [
     {
         "name": "dnsCheck",
         "period": 2000,

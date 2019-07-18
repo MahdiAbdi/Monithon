@@ -1,4 +1,4 @@
-const targets = require("./targets.json");
+const targets = require("./targets.js");
 
 module.exports = {
     checkPeriod: function (req, res) {
