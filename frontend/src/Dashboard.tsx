@@ -1,29 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import { useTheme, CssBaseline, makeStyles, Theme, createStyles, Grid } from '@material-ui/core'
 import { AppDrawer } from './AppDrawer';
 import { FCProps } from './shared/types/FCProps';
 import { drawerWidth } from './constansts/drawer';
 import { TopBar } from './TopBar';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+import { MainRoutes } from './MainRoutes';
 
 interface OwnProps { }
 type Props = FCProps<OwnProps>
+
+export const SERVER_URL = `http://192.168.109.89:3000`;
 
 export const Dashboard = () => {
     const classes = useStyles();
     const [isDrawerOpen, setIsDrawerOpen] = React.useState(true);
 
-    function handleDrawerOpen() {
-        setIsDrawerOpen(true);
-    }
-
     function handleDrawerClose() {
         setIsDrawerOpen(false);
     }
 
-    const items: string[] = ['hey', 'two', 'three'];
-
-
+    function handleDrawerOpen() {
+        setIsDrawerOpen(true);
+    }
+    
     return <div className={classes.root}>
         <CssBaseline />
         <TopBar open={isDrawerOpen} handleDrawerOpen={handleDrawerOpen} />
@@ -33,15 +35,7 @@ export const Dashboard = () => {
                 [classes.contentShift]: isDrawerOpen,
             })}
         >
-            <p>HELLoooooo</p>
-            <Grid container>
-                <Grid item xs={12}>
-                    <div>Number of Services: X/Y</div>
-                </Grid>
-                <Grid container>
-                    {items.map(item => <Grid item xs={4}>{item}</Grid>)}
-                </Grid>
-            </Grid>
+            <MainRoutes />
         </main>
     </div>
 }
@@ -67,5 +61,15 @@ const useStyles = makeStyles((theme: Theme) =>
             }),
             marginLeft: 0,
         },
+        statusGrid: {
+            padding: 50,
+            margin: 20,
+            border: `1px solid blue`
+        },
+        serviceGrid: {
+            padding: 50,
+            margin: 20,
+            border: `1px solid green`
+        }
     }),
 );
