@@ -23,5 +23,27 @@ module.exports = {
             if (err)
                 console.error(err);
         });
+    },
+    getLastStatus: function (targetName) {
+        return new Promise((resolve, reject) => {
+            connection.query(`SELECT * from ${TABLE_NAME} WHERE name = '${targetName}' ORDER BY id DESC LIMIT 1`,
+                (err, rows, fields) => {
+                    if (err)
+                        return reject(err);
+                    
+                    resolve(rows[0]);
+                })
+        });
+    },
+    getAllLastStatuses: function () {
+        return new Promise((resolve, reject) => {
+            connection.query(`SELECT * FROM (SELECT max(id) as maxid from ${TABLE_NAME} GROUP BY name) AS ids JOIN ${TABLE_NAME} on id=ids.maxid`,
+                (err, rows, fields) => {
+                    if (err)
+                        return reject(err);
+                    
+                    resolve(rows[0]);
+                })
+        });
     }
 }

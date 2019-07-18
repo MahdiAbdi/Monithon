@@ -1,5 +1,7 @@
 # Custom ignores
 config.js
+deploy-last.sh
+deploy.sh
 
 
 # Created by https://www.gitignore.io/api/node,visualstudiocode
