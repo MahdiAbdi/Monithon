@@ -12,3 +12,19 @@ In order to run the server, follow these steps:
 - `node index.js`
 
 ### Define Targets
+In the `targets.js` file there is a list of targets to get monitored.  
+Each target has a schema like below:
+```js
+{
+  "name": "dnsCheckImp", // Custom unique name to identify this target
+  "period": 5000, // check inerval
+  "source": { // The service to get monitored.
+      "type": "script", // can be "script", "url", "dnsCheck"
+      "location": "./samples/dnsCheck.sh 172.16.6.79"
+  },
+  "failureHook": { // The hook to get triggered when the service goes down.
+      "type": "script",
+      "location": "./samples/dnsCheckFailed.sh"
+  } 
+}
+```
