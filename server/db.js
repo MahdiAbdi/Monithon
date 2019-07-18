@@ -42,7 +42,7 @@ module.exports = {
                     if (err)
                         return reject(err);
                     
-                    resolve(rows[0]);
+                    resolve(rows);
                 })
         });
     }

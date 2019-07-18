@@ -1,2 +1,4 @@
-echo salam
-exit 123
+#!/bin/bash
+host -a google.com $1
+
+exit $?
