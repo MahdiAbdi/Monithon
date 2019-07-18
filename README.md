@@ -28,3 +28,7 @@ Each target has a schema like below:
   } 
 }
 ```
+### Source types
+- "script": Runs the provided script.
+- "dnsCheck": Checks the provided dns. (location field is considered as dns address)
+- "url": curls a the provided url.
