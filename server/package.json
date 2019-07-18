@@ -1,0 +1,30 @@
+{
+  "name": "dideban",
+  "version": "0.1.0",
+  "description": "A monitoring service to check variuos services health.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MahdiAbdi/Monithon.git"
+  },
+  "keywords": [
+    "dideban",
+    "monitoring",
+    "health-check"
+  ],
+  "author": "emranbm",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MahdiAbdi/Monithon/issues"
+  },
+  "homepage": "https://github.com/MahdiAbdi/Monithon#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "shelljs": "^0.8.3"
+  },
+  "devDependencies": {}
+}
